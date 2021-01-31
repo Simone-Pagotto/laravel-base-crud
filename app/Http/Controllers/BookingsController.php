@@ -44,6 +44,8 @@ class BookingsController extends Controller
     public function create()
     {
         //
+
+        return view('bookings.create');
     }
 
     /**
@@ -52,9 +54,23 @@ class BookingsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request)//store ha una iniezione di tipo rquest: richiesta http
     {
-        //
+        //inserire nuovi elementi nel db la cui visualizzazione è forita da create
+
+        $newBooking = new Booking();
+
+        $newBooking->guest_full_name = $request->input('full_name');
+        $newBooking->guest_credit_card = $request->input('credit_card');
+        $newBooking->room = $request->input('room');
+        $newBooking->from_date = '';
+        $newBooking->to_date = '';
+        $newBooking->more_details = '';
+        
+
+        $newBooking->save();
+
+        return view('bookings.success');
     }
 
     /**
