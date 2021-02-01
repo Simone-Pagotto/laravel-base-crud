@@ -13,6 +13,8 @@
 </head>
 <body>
 
+    @include('layouts._header')
+
     @yield('content', 'No content loaded')
 
     {{-- Bootstrap JS 5 --}}
@@ -20,4 +22,4 @@
 
     
 </body>
-</html>
+</htm

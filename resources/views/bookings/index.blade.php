@@ -1,5 +1,19 @@
 @extends('layouts.main')
 
+    <ul>
+        @foreach(config('menu.pages') as $menu)
+            @if($loop->last)
+                <li class={{ Route::currentRouteName() == $menu['pathId'] ? 'active' : ''}}>
+                    <button><a href="{{ route($menu['pathId'])}}">{{$menu['displayText']}}</a></button>
+                </li
+            @else    
+                <li class={{ Route::currentRouteName() == $menu['pathId'] ? 'active' : ''}}>
+                    <a href="{{ route($menu['pathId'])}}">{{$menu['displayText']}}</a>
+                </li>
+            @endif
+        @endforeach
+    </ul>
+
 @section('content')
     <table class="table">
   <thead>
